@@ -23,5 +23,7 @@ Route::post('/login',[AuthController::class,'login']);
 Route::post('/logout',[AuthController::class,'logout']);
 Route::post('/compeleteprofile',[AuthController::class,'compeleteprofile']);
 Route::resource('consualting', ConsualtingController::class);
+Route::post('/search/{data}',[ConsualtingController::class,'search']);
+Route::post('/expert_detalis/{id}',[AuthController::class,'show']);
 
 

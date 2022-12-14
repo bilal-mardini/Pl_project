@@ -5,10 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Consualting;
 use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\DB;
-
-use function GuzzleHttp\Promise\all;
 
 class ConsualtingController extends Controller
 {
@@ -96,5 +93,14 @@ class ConsualtingController extends Controller
     public function destroy($id)
     {
         //
+    }
+    public function search(Request $request) {
+        $data = $request->get('data');
+
+        $search = Consualting::where('name', 'like', "%{$data}%")->get();
+        $search = User::where('name', 'like', "%{$data}%")->where('role_id',2)->get();
+        return response()->json([
+            'data' => $search
+        ]);
     }
 }

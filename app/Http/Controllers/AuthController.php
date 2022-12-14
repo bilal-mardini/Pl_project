@@ -89,4 +89,14 @@ class AuthController extends Controller
             'message' => ' update successfully !',
         ], 201);
     }
+    public function show($id){
+ $expert_detalis=User::find($id);
+ if (!$expert_detalis) {
+    return response()->json([
+        'message' => '404 Not Found'
+    ], 400);
 }
+ return response($expert_detalis);
+    }
+}
+
