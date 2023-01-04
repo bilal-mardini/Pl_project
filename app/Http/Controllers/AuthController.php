@@ -97,10 +97,10 @@ class AuthController extends Controller
 }
  return response($expert_detalis);
     }
-    // public function rate(Request $request ,$id){
-    //     $rate = User::find($id);
-    //     $rate->rate = $request->input('rate');
-    //     return response()->json($rate);
-    // }
+    public function rate(Request $request,$id){
+        $rate = User::find($id);
+        $rate->rate = $request->input('rate');
+        return response()->json($rate);
+    }
 }
 
