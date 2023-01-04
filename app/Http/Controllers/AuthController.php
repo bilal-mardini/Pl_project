@@ -65,7 +65,6 @@ class AuthController extends Controller
     }
     public function compeleteprofile(Request $request)
     {
-        dd(Auth::check());
         $compeleteprofile = $request->validate([
             'image_url' => 'required|string|unique:users,email',
             'experince_title' => 'required|string',
@@ -98,5 +97,10 @@ class AuthController extends Controller
 }
  return response($expert_detalis);
     }
+    // public function rate(Request $request ,$id){
+    //     $rate = User::find($id);
+    //     $rate->rate = $request->input('rate');
+    //     return response()->json($rate);
+    // }
 }
 

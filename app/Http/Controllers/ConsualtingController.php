@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Consualting;
 use App\Models\User;
+use App\Models\BookAppiotment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -103,4 +104,25 @@ class ConsualtingController extends Controller
             'data' => $search
         ]);
     }
+    public function Date(){
+        $dates=User::select('available_time','id')->get();
+        return response ([$dates]);
+    }
+    public function BookAnAppointment(Request $request)
+    {
+    $book= new BookAppiotment();
+    $book->create([
+        'expert_id'=>$request->expert_id,
+        'user_id'=>$request->user_id,
+        'date'=>$request->date,
+       ]);
+
+       return response(['message' => ' create successfully !'], 201);
+    }
+    public function Appointments()
+    {
+    $appointments = DB::table('book_appiotments')->get();
+    return response([ $appointments], 201);
+}
+
 }

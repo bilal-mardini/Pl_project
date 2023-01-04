@@ -4,6 +4,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ConsualtingController;
+use App\Http\Controllers\UploadImg;
+use App\Http\Controllers\UploadImgController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -25,5 +28,10 @@ Route::post('/compeleteprofile',[AuthController::class,'compeleteprofile']);
 Route::resource('consualting', ConsualtingController::class);
 Route::post('/search/{data}',[ConsualtingController::class,'search']);
 Route::post('/expert_detalis/{id}',[AuthController::class,'show']);
+Route::get('/Dates',[ConsualtingController::class,'Date']);
+Route::post('/BookAppiotment',[ConsualtingController::class,'BookAnAppointment']);
+Route::get('/Appointments',[ConsualtingController::class,'Appointments']);
+Route::get('/rate',[AuthController::class,'rate']);
+Route::post('/uploadImage',[UploadImgController::class,'uploadImage']);
 
 
